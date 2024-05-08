@@ -10,7 +10,7 @@ const Authpage = () => {
   const [code,setCode] = useState("");
   return (
     <div>
-      {step === 1 && <SendOTP />}
+      {step === 1 && <SendOTP setStep={setStep} mobile={mobile} setMobile={setMobile}  />}
       {step === 2 && <CheckOTP />}
     </div>
   );
