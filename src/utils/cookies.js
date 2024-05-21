@@ -7,4 +7,11 @@ const cookies = (token) => {
   }`;
 };
 
-export {cookies};
+const getCookie = (cookieNmae) => {
+  const accessToken = document.cookie
+    .split(";")
+    .find((token) => token.trim().split("=")[0] === cookieNmae);
+  return accessToken.split("=")[1];
+};
+
+export { cookies, getCookie };

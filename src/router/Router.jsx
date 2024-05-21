@@ -3,6 +3,7 @@ import { Route, Routes } from "react-router-dom";
 // react-query
 import { useQuery } from "@tanstack/react-query";
 import { userProfile } from "../services/user";
+import { getCookie } from "../utils/cookies";
 // pages
 import Homepage from "../pages/Homepage";
 import Dashboard from "../pages/Dashboard";
@@ -13,6 +14,7 @@ import Authpage from "../pages/Authpage";
 const Router = () => {
   const queryKey = ["profile"];
   const {data,isPending,error} = useQuery({queryKey,queryFn:userProfile});
+  console.log(getCookie("accessToken"))
   console.log({data,isPending,error});
   return (
     <Routes>
