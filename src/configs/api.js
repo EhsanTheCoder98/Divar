@@ -1,4 +1,5 @@
 import axios from "axios";
+import { getCookie } from "../utils/cookies";
 
 const api = axios.create({
   baseURL: import.meta.env.VITE_BASE_URL,
@@ -7,5 +8,17 @@ const api = axios.create({
   },
 });
 
+api.interceptors.request.use(
+  (req) => {
+    const accessToken = getCookie("accessToken");
+    if (accessToken) {
+      req.headers["Authorization"] = `bearer ${accessToken}`;
+    }
+    return req;
+  },
+  (error) => {
+    return Promise.reject(error);
+  }
+);
 
 export default api;
