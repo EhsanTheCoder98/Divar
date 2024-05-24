@@ -1,4 +1,5 @@
 import React from "react";
+import styles from "./CheckOTP.module.css";
 import { useQuery } from "@tanstack/react-query";
 // services
 import { checkOtp } from "../../services/auth";
@@ -10,11 +11,6 @@ import { useNavigate } from "react-router-dom";
 
 const CheckOTP = ({ mobile, code, setCode, setStep }) => {
   const navigate = useNavigate();
-  const { refetch } = useQuery({
-    queryKey: ["profile"],
-    queryFn: userProfile,
-  });
-
   const submitHandler = async (event) => {
     event.preventDefault();
     if (code.length !== 5) return;
@@ -22,14 +18,13 @@ const CheckOTP = ({ mobile, code, setCode, setStep }) => {
     if (response) {
       cookies(response.data);
       navigate("/");
-      refetch();
     }
     if (error) {
       console.log(error);
     }
   };
   return (
-    <form onSubmit={submitHandler}>
+    <form onSubmit={submitHandler} className={styles.form}>
       <p>تایید کد پیامک شده</p>
       <span>
         لطفا کد تایید ارسال شده به شماره تلفن «{mobile}» را وارد کنید.
@@ -43,7 +38,7 @@ const CheckOTP = ({ mobile, code, setCode, setStep }) => {
         onChange={(e) => setCode(e.target.value)}
       />
       <button type="submit">ورود</button>
-      <button onClick={() => setStep(1)}>تغییر شماره تلفن</button>
+      <button onClick={() => setStep(1)} className={styles.backButton}>تغییر شماره تلفن</button>
     </form>
   );
 };

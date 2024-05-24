@@ -1,4 +1,5 @@
 import React from "react";
+import styles from "./SendOTP.module.css";
 // services
 import {sendOtp} from "../../services/auth";
 
@@ -13,7 +14,7 @@ const SendOTP = ({ setStep, setMobile, mobile }) => {
         }
     }
   return (
-    <form onSubmit={submitHandler}>
+    <form onSubmit={submitHandler} className={styles.form}>
       <p>ورود به حساب کاربری</p>
       <span>
         برای استفاده از امکانات دیوار،لطفا شماره موبایل خود را وارد کنید.کد
