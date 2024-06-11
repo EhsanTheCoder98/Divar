@@ -1,18 +1,20 @@
 import React from "react";
 import styles from "./SendOTP.module.css";
 // services
-import {sendOtp} from "../../services/auth";
+import { sendOtp } from "../../services/auth";
 
 const SendOTP = ({ setStep, setMobile, mobile }) => {
-    const submitHandler = async(event) => {
-        event.preventDefault();
-        if(mobile.length !== 11) return;
+  const submitHandler = async (event) => {
+    event.preventDefault();
+    if (mobile.length !== 11) return;
 
-        const {response,error} = await sendOtp(mobile);
-        if(response){
-            setStep(2)
-        }
+    const { response, error } = await sendOtp(mobile);
+    if (response) {
+      setStep(2);
+    }else{
+      console.log(error.message)
     }
+  };
   return (
     <form onSubmit={submitHandler} className={styles.form}>
       <p>ورود به حساب کاربری</p>
@@ -26,7 +28,7 @@ const SendOTP = ({ setStep, setMobile, mobile }) => {
         placeholder="شماره تلفن خود را وارد کنید"
         id="input"
         value={mobile}
-        onChange={(e)=>setMobile(e.target.value)}
+        onChange={(e) => setMobile(e.target.value)}
       />
       <button type="submit">ارسال کد تایید</button>
     </form>
