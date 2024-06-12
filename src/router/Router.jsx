@@ -4,7 +4,7 @@ import { Navigate, Route, Routes } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import { userProfile } from "../services/user";
 // components
-import Loader from "../components/templates/modules/Loader";
+import Loader from "../components/modules/Loader";
 // pages
 import Homepage from "../pages/Homepage";
 import Dashboard from "../pages/Dashboard";

@@ -1,4 +1,5 @@
 import { useState } from "react";
+import styles from "./AddCategory.module.css";
 
 const AddCategory = () => {
   const [form, setFrom] = useState({ name: "", slug: "", icon: "" });
@@ -10,7 +11,11 @@ const AddCategory = () => {
     console.log(form);
   };
   return (
-    <form onChange={changeHandler} onSubmit={submitHandler}>
+    <form
+      onChange={changeHandler}
+      onSubmit={submitHandler}
+      className={styles.form}
+    >
       <h3>دسته بندی جدید</h3>
       <label htmlFor="name">اسم دسته جدید</label>
       <input type="text" name="name" id="name" />
